@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<script src="vue.js"></script>
+	<script src="bot-memory.js"></script>
+	<script src="bot-processor.js"></script>
+	<link rel="stylesheet" type="text/css" href="bootstrap.min.css">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+	<link rel="stylesheet" type="text/css" href="custom.css">
+	<title>Mr. Bot</title>
+</head>
+	<body>
+
+					<div id="root">
+						<div class="chat-popup" v-if="doShowChatBox">
+								<div class="chatTitle">
+									<span>Mr. Bot</span>
+	    							<span class="closeChatBox" @click="colseFullChatBox"><i class="fa fa-window-minimize" aria-hidden="true"></i></span>
+								</div>
+							<div class="chatbox" id="chatBox">
+								<div v-for="msg in comunication">
+									<div class="bot-msg" v-if="msg.from == -1"><i class="fa fa-user"></i> {{msg.text}}</div>
+									<div class="human-msg" v-else>{{msg.text}} <i class="fa fa-user"></i></div>
+								</div>
+								<div class="bot-msg-typing" v-if="botTyping">
+									<i class="fa fa-user"></i> <div class="blink">Mr. Bot is Typing.....</div>
+								</div>
+							</div>
+
+							<form @submit.prevent="sendMessage">
+								<input type="text" class="form-control" v-model="message"><br>
+							</form>
+						</div>
+						<div v-if="showOpenChatBoxBtn">
+							<span class="open-button" @click="displayFullChatBox"><i class="fa fa-comments-o" aria-hidden="true"></i></button>
+						</div>
+					</div>
+	</body>
+</html>
+
+<script type="text/javascript">
+
+	var rootVue = new Vue({
+		el: '#root',
+		data: {
+			message: '',
+			comunication:[
+				{from: -1, text: 'Hello, Mr. Bot is here'}
+			],
+			botTyping: false,
+			doShowChatBox: false,
+			showOpenChatBoxBtn: true,
+		},
+		methods: {
+			sendMessage: function(){
+				if(this.message.trim().length > 0){
+					this.comunication.push({from: 1, text: this.message});
+					this.botTyping = true;
+					setTimeout(function () {
+						generateBotMessage(rootVue.message.toLowerCase().trim());
+						rootVue.botTyping = false;
+				    }, 2000);
+				}
+			},
+			displayFullChatBox: function(){
+				this.doShowChatBox = true;
+				this.showOpenChatBoxBtn = false;
+			},
+			colseFullChatBox: function(){
+				this.doShowChatBox = false;
+				this.showOpenChatBoxBtn = true;
+			}
+		},
+		updated: function(){
+			scrollToBottom(document.getElementById("chatBox"));
+		}
+	});
+
+	function scrollToBottom(el){
+		el.scrollTop = el.scrollHeight;
+	}
+
+</script>
