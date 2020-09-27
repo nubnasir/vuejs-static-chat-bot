@@ -9,31 +9,29 @@
 	<title>Mr. Bot</title>
 </head>
 	<body>
-
-					<div id="root">
-						<div class="chat-popup" v-if="doShowChatBox">
-								<div class="chatTitle">
-									<span>Mr. Bot</span>
-	    							<span class="closeChatBox" @click="colseFullChatBox"><i class="fa fa-window-minimize" aria-hidden="true"></i></span>
-								</div>
-							<div class="chatbox" id="chatBox">
-								<div v-for="msg in comunication">
-									<div class="bot-msg" v-if="msg.from == -1"><i class="fa fa-user"></i> {{msg.text}}</div>
-									<div class="human-msg" v-else>{{msg.text}} <i class="fa fa-user"></i></div>
-								</div>
-								<div class="bot-msg-typing" v-if="botTyping">
-									<i class="fa fa-user"></i> <div class="blink">Mr. Bot is Typing.....</div>
-								</div>
-							</div>
-
-							<form @submit.prevent="sendMessage">
-								<input type="text" class="send-message-input" v-model="message"><br>
-							</form>
-						</div>
-						<div v-if="showOpenChatBoxBtn">
-							<span class="open-button" @click="displayFullChatBox"><i class="fa fa-comments-o" aria-hidden="true"></i></button>
-						</div>
+		<div id="root">
+			<div class="chat-popup" v-if="doShowChatBox">
+				<div class="chatTitle">
+					<span>Mr. Bot</span>
+					<span class="closeChatBox" @click="colseFullChatBox"><i class="fa fa-window-minimize" aria-hidden="true"></i></span>
+				</div>
+				<div class="chatbox" id="chatBox">
+					<div v-for="msg in comunication">
+						<div class="bot-msg" v-if="msg.from == -1"><i class="fa fa-user"></i> {{msg.text}}</div>
+						<div class="human-msg" v-else>{{msg.text}} <i class="fa fa-user"></i></div>
 					</div>
+					<div class="bot-msg-typing" v-if="botTyping">
+						<i class="fa fa-user"></i> <div class="blink">Mr. Bot is Typing.....</div>
+					</div>
+				</div>
+				<form @submit.prevent="sendMessage">
+					<input type="text" class="send-message-input" v-model="message"><br>
+				</form>
+			</div>
+			<div v-if="showOpenChatBoxBtn">
+				<span class="open-button" @click="displayFullChatBox"><i class="fa fa-comments-o" aria-hidden="true"></i></button>
+			</div>
+		</div>
 	</body>
 </html>
 
