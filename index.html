@@ -4,7 +4,7 @@
 	<script src="vue.js"></script>
 	<script src="bot-memory.js"></script>
 	<script src="bot-processor.js"></script>
-	<link rel="stylesheet" type="text/css" href="bootstrap.min.css">
+	<!-- <link rel="stylesheet" type="text/css" href="bootstrap.min.css"> -->
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 	<link rel="stylesheet" type="text/css" href="custom.css">
 	<title>Mr. Bot</title>
@@ -28,7 +28,7 @@
 							</div>
 
 							<form @submit.prevent="sendMessage">
-								<input type="text" class="form-control" v-model="message"><br>
+								<input type="text" class="send-message-input" v-model="message"><br>
 							</form>
 						</div>
 						<div v-if="showOpenChatBoxBtn">
