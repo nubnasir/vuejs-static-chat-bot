@@ -1,4 +1,4 @@
-
+// This is for processing bot message
 var defaultBotReply = "Sorry, I couldn't understand your message. I need more training to understand your message.";
 
 function generateBotMessage(userMessage){

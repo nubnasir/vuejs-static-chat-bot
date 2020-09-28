@@ -54,7 +54,9 @@
 					this.comunication.push({from: 1, text: this.message});
 					this.botTyping = true;
 					setTimeout(function () {
+						//Generate bot answer start: here api can be used to get bot answer
 						generateBotMessage(rootVue.message.toLowerCase().trim());
+						//Generate bot answer end
 						rootVue.botTyping = false;
 				    }, 2000);
 				}

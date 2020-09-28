@@ -1,4 +1,4 @@
-
+// This is bot static memory
 
 var botMemory = [
 	{
