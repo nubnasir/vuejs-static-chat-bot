@@ -64,7 +64,7 @@
     border: solid 1px #000;
 }
 
-.open-button {
+.chat-start-button {
 	padding: 16px 20px;
 	border: none;
 	cursor: pointer;
@@ -97,4 +97,12 @@
 	background-color: #8383ff;
 	border-radius: 2px;
 	padding: 5px;
+}
+
+.custom-hints {
+	font-size: 18px;
+	color: #00f;
+	vertical-align: middle;
+	height: 50px
+	margin-right: 20px;
 }
